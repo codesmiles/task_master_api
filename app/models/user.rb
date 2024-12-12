@@ -6,5 +6,6 @@ class User < ApplicationRecord
     if: -> { new_record? || changes[:password_digest] }
   validates :names, :presence => true, :length => { :minimum => 3 , :maximum => 50} 
 
+  has_many :tasks, dependent: :destroy
   
 end

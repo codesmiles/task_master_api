@@ -10,11 +10,18 @@ Rails.application.routes.draw do
       namespace :auth do
         post '/signup', to: 'auth#signup'
         post '/login', to: 'auth#login'
-        get '/profile', to: 'auth#profile'
+        get '/profile', to: 'auth#profile' # show single user
+        
+        get "/tasks", to: "task#index"
+        get "/user_tasks", to: "task#user_tasks"
+        post "/task/create", to: "task#create_user_task"
+        patch "/update_task/:id", to: "task#update_task"
+        delete "/task/:id", to: "task#destroy_task"
+
+        # resources :task, only: [:index, :show, :create, :update, :destroy]
       end   
-             
-      resources :user, only: [:index, :show, :update, :destroy]
-      resources :task, only: [:index, :show, :create, :update, :destroy]
+
+      resources :user, only: [:index, :update, :destroy]
     end
         
 

@@ -35,7 +35,8 @@ class Api::V1::Auth::AuthController < ApplicationController
 
   def profile
     # This action is protected and requires authentication
-    render json: current_user
+
+    render json: {user: current_user, task: current_user.tasks}
   end
 
   private

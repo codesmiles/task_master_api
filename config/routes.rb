@@ -7,11 +7,18 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :user, only: [:index, :show, :create, :update, :destroy]
-      # resources :task, only: [:index, :show, :create, :update, :destroy]
+      namespace :auth do
+        post '/signup', to: 'auth#signup'
+        post '/login', to: 'auth#login'
+        get '/profile', to: 'auth#profile'
+      end   
+             
+      resources :user, only: [:index, :show, :update, :destroy]
+      resources :task, only: [:index, :show, :create, :update, :destroy]
     end
+        
+
   end
   # Defines the root path route ("/")
   # root "posts#index"
 end
- 

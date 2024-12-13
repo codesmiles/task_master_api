@@ -12,13 +12,14 @@ Rails.application.routes.draw do
         post '/login', to: 'auth#login'
         get '/profile', to: 'auth#profile' # show single user
         
-        get "/tasks", to: "task#index"
-        get "/user_tasks", to: "task#user_tasks"
-        post "/task/create", to: "task#create_user_task"
-        patch "/update_task/:id", to: "task#update_task"
-        delete "/task/:id", to: "task#destroy_task"
+        get "/tasks/all", to: "tasks#all"
+        resources :tasks do
+          # Additional collection routes
+          get :completed, on: :collection
+          get :pending, on: :collection
+          get :overdue, on: :collection
+        end
 
-        # resources :task, only: [:index, :show, :create, :update, :destroy]
       end   
 
       resources :user, only: [:index, :update, :destroy]

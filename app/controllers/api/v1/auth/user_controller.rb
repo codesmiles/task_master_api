@@ -7,7 +7,7 @@ module Api
         def index
           # view all users
           @users = User.all
-          render json: @users
+          render json: @users, each_serializer: UserSerializer, status: :success
         end
         
         def create
@@ -16,7 +16,7 @@ module Api
           if !@user
             render json: @user.errors, status: :unprocessable_entity
           end
-          render json: @user, status: :created
+          render json: @user,  serializer: UserSerializer, status: :created
         end
 
         def show
@@ -26,7 +26,7 @@ module Api
           # Show a specific user
           @user = User.find_by(email: @email)
           if @user
-            render json: @user
+            render json: @user, serializer: UserSerializer
           else
             render json: { error: 'User not found' }, status: :not_found
           end

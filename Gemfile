@@ -33,6 +33,20 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jwt' 
 gem 'rack-cors' 
 
+# Authentication
+gem 'devise'
+# JWT authentication (optional, if you want token-based auth)
+gem 'devise-jwt'
+
+# Authorization
+gem 'pundit'
+
+# Pagination
+gem 'kaminari'
+
+# JSON Serialization
+gem 'active_model_serializers'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 

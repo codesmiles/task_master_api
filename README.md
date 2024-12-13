@@ -23,6 +23,10 @@ Things you may want to cover:
 
 * ...
 
+## ToDo
+
+* Validations for tasks in the model (weird)
+* concerns being the middleware for rails (weird)
 
 ## Commands
 
